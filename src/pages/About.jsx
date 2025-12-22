@@ -2,7 +2,7 @@ import "../Styles/Animations.css";
 
 export default function About() {
   return (
-    <section className="relative pt-28 min-h-screen overflow-hidden flex items-center bg-(--bg) text-(--text)">
+    <section className="relative px-6 py-24 min-h-screen overflow-hidden flex items-center bg-(--bg) text-(--text)">
       <div className="pointer-events-none absolute inset-0">
         <div className="animate-fade-up animate-random-slow absolute -top-40 -left-40 h-96 w-96 rounded-full bg-(--primary)/20 blur-3xl"></div>
         <div className="animate-fade-up animate-random-medium absolute top-1/2 -right-40 h-134 w-134 rounded-full bg-(--primary-soft)/30 blur-3xl"></div>

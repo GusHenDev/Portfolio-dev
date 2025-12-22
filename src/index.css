@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+/* Dark mode por classe (Tailwind v4) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+body,
+section,
+div,
+header,
+nav,
+footer,
+button {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --bg: #e6c7b0;
+  /* fundo principal */
+  --bg-soft: #f6f2eeae;
+  --surface: #c5a688;
+  /* cards */
+  --surface-soft: #f5f6fa;
+
+  --text: #0b1018;
+  /* texto */
+  --muted: #4b5563;
+  --destak: #F97316;
+
+  --primary: #ff8000;
+  /* mesmo roxo */
+  --primary-soft: #e0990c;
+
+  --border: #e5e7eb;
+
+}
+
+.dark {
+  --bg: #050814;
+  /* fundo principal */
+  --bg-soft: #121a41b7;
+  /* gradiente / seções */
+  --surface: #0b102a;
+  /* cards / navbar */
+  --surface-soft: #0e1433;
+  /* hover / destaque leve */
+
+  --text: #e5e7eb;
+  /* texto principal */
+  --muted: #9ca3af;
+  --destak: #6366F1;
+  /* texto secundário */
+
+  --primary: #6c6cff;
+  /* roxo/indigo destaque */
+  --primary-soft: #9810fa;
+  /* glow / background suave */
+
+  --border: #1b1f3a;
+}

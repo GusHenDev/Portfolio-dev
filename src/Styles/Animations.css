@@ -1,0 +1,112 @@
+.animate-fade-up {
+  animation: fadeUp 1s ease forwards;
+}
+
+.btn {  
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+}
+
+.cards {
+  --stagger: 0.4s; /* intervalo entre cada tech */
+}
+
+.card {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: calc((var(--index) * var(--stagger))*-1);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: scale(1);
+    border-width: 0;
+    border-color: transparent;
+  }
+  50% {
+    transform: scale(1.05);
+    border-width: 0.1rem;
+    border-color: var(--destak);
+  }
+
+}
+
+/* animação */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes randomFloat {
+  0% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(120px, -80px);
+  }
+  30% {
+    transform: translate(-100px, 60px);
+  }
+  45% {
+    transform: translate(80px, 140px);
+  }
+  60% {
+    transform: translate(-140px, -100px);
+  }
+  75% {
+    transform: translate(100px, 40px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.animate-random-slow {
+  animation: randomFloat 50s ease-in-out infinite;
+}
+
+.animate-random-medium {
+  animation: randomFloat 35s ease-in-out infinite;
+}
+
+.animate-random-fast {
+  animation: randomFloat 28s ease-in-out infinite;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes backdropFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-modal {
+  animation: modalFadeIn 0.35s ease-out forwards;
+}
+
+.animate-backdrop {
+  animation: backdropFade 0.3s ease-out forwards;
+}
+

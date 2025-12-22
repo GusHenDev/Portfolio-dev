@@ -1,4 +1,4 @@
-import "../styles/animations.css";
+import "../Styles/Animations.css";
 
 export default function About() {
   return (

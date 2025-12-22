@@ -50,10 +50,10 @@ export default function Navbar() {
             >
                 <ul className="flex flex-col gap-4 px-6 py-4">
                     <NavLink onClick={() => setMenuOpen(false)} to="/" className={linkStyle}>Home</NavLink>
-                    <NavLink onClick={() => setMenuOpen(false)} to="/sobre" className={linkStyle}>Sobre</NavLink>
-                    <NavLink onClick={() => setMenuOpen(false)} to="/projetos" className={linkStyle}>Projetos</NavLink>
-                    <NavLink onClick={() => setMenuOpen(false)} to="/labs" className={linkStyle}>Labs</NavLink>
-                    <NavLink onClick={() => setMenuOpen(false)} to="/contato" className={linkStyle}>Contato</NavLink>
+                    <NavLink onClick={() => setMenuOpen(false)} to="/About" className={linkStyle}>Sobre</NavLink>
+                    <NavLink onClick={() => setMenuOpen(false)} to="/Projects" className={linkStyle}>Projetos</NavLink>
+                    <NavLink onClick={() => setMenuOpen(false)} to="/Labs" className={linkStyle}>Labs</NavLink>
+                    <NavLink onClick={() => setMenuOpen(false)} to="/Contact" className={linkStyle}>Contato</NavLink>
 
                     <button onClick={toggleTheme} className="cursor-pointer text-left text-xl">
                         🌓 Alternar tema

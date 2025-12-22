@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer className="relative bg-(--bg) px-6 py-12 text-(--muted)">
@@ -22,11 +23,11 @@ export default function Footer() {
               Navegação
             </h4>
             <ul className="mt-3 space-y-2 text-sm">
-              <li><a href="/" className="hover:text-(--primary)">Home</a></li>
-              <li><a href="/About" className="hover:text-(--primary)">Sobre</a></li>
-              <li><a href="/Projects" className="hover:text-(--primary)">Projetos</a></li>
-              <li><a href="/Labs" className="hover:text-(--primary)">Labs</a></li>
-              <li><a href="/Contact" className="hover:text-(--primary)">Contato</a></li>
+              <li><Link to="/" className="hover:text-(--primary)">Home</Link></li>
+              <li><Link to="/About" className="hover:text-(--primary)">Sobre</Link></li>
+              <li><Link to="/Projects" className="hover:text-(--primary)">Projetos</Link></li>
+              <li><Link to="/Labs" className="hover:text-(--primary)">Labs</Link></li>
+              <li><Link to="/Contact" className="hover:text-(--primary)">Contato</Link></li>
             </ul>
           </div>
 

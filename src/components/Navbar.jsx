@@ -26,7 +26,7 @@ export default function Navbar() {
                     <NavLink to="/" className={linkStyle}>Home</NavLink>
                     <NavLink to="/About" className={linkStyle}>Sobre</NavLink>
                     <NavLink to="/Projects" className={linkStyle}>Projetos</NavLink>
-                    <NavLink to="/labs" className={linkStyle}>Labs</NavLink>
+                    <NavLink to="/Labs" className={linkStyle}>Labs</NavLink>
                     <NavLink to="/Contact" className={linkStyle}>Contato</NavLink>
 
                     {/* Dark mode */}

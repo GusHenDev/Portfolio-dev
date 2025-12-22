@@ -17,7 +17,7 @@ export default function ProjectCarousel({ images }) {
         src={images[index]}
         alt="Imagem do projeto"
         loading="lazy"
-        className="w-full rounded-xl border border-white/10 object-cover"
+        className="w-full rounded-xl border border-white/10 shadow-lg shadow-black/40 object-cover"
       />
 
       {/* Botões */}

@@ -70,7 +70,7 @@ Este projeto contribuiu diretamente para o desenvolvimento das seguintes habilid
 <a href="https://gustavosan-games.netlify.app/">🎮 Confira meu Portifolio de GameDev</a>
 `,
       techs: ["Unity", "C#", "Mobile"],
-      video: "/Videos/ProjetFactoryTeaser.mp4",
+      video: "https://www.youtube.com/embed/hjIJenf5m60?si=3cpL5QNlfQzS9OX3&autoplay=1&mute=1",
       images: [
         "Images/PF1.png",
         "Images/PF2.png",

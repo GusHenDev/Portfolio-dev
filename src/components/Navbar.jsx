@@ -1,65 +1,67 @@
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
-import { useTheme } from "../Context/ThemeContext";
+import { Menu, X } from 'lucide-react';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+
+const links = [
+  { label: 'Início', to: '/', end: true },
+  { label: 'Sobre', to: '/About' },
+  { label: 'Projetos', to: '/Projects' },
+  { label: 'Labs', to: '/Labs' },
+  { label: 'Contato', to: '/Contact' },
+];
 
 export default function Navbar() {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const { theme, toggleTheme } = useTheme();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    function linkStyle({ isActive }) {
-        return isActive
-            ? "font-semibold text-(--destak)"
-            : "text-(--text) hover:text-(--destak) transition";
-    }
+  function closeMenu() {
+    setMenuOpen(false);
+  }
 
-    return (
-        <header className="fixed over top-0 w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md">
-            <nav className="m-0 px-6 py-4 flex items-center justify-between">
+  return (
+    <header className="site-header">
+      <div className="page-shell">
+        <nav className="site-nav" aria-label="Navegação principal">
+          <NavLink className="brand-mark" to="/" onClick={closeMenu}>
+            <span className="brand-symbol" aria-hidden="true">
+              G
+            </span>
+            <span>GuhDev</span>
+          </NavLink>
 
-                {/* Logo */}
-                <a href="/" className="text-xl font-bold">
-                    <span className="dark:text-white text-orange-300">Guh</span><span className="text-orange-700 dark:text-indigo-500">Dev</span>
-                </a>
+          <div className="nav-links">
+            {links.map(({ label, to, end }) => (
+              <NavLink key={to} to={to} end={end}>
+                {label}
+              </NavLink>
+            ))}
+          </div>
 
-                {/* Desktop menu */}
-                <ul className="hidden md:flex gap-8 items-center">
-                    <NavLink to="/" className={linkStyle}>Home</NavLink>
-                    <NavLink to="/About" className={linkStyle}>Sobre</NavLink>
-                    <NavLink to="/Projects" className={linkStyle}>Projetos</NavLink>
-                    <NavLink to="/Labs" className={linkStyle}>Labs</NavLink>
-                    <NavLink to="/Contact" className={linkStyle}>Contato</NavLink>
-
-                    {/* Dark mode */}
-                    <button onClick={toggleTheme} className="rounded-full cursor-pointer border h-12 w-12 bg-orange-100 dark:bg-slate-900 border-orange-800 dark:border-slate-200 transition-transform hover:scale-105 active:scale-95">
-                        {theme === "dark" ? "🌙" : "☀️"}
-                    </button>
-                </ul>
-
-                {/* Mobile button */}
-                <button
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    className="md:hidden text-2xl"
-                >
-                    ☰
-                </button>
-            </nav>
-
-            {/* Mobile menu */}
-            <div
-                className={`md:hidden transition-all duration-300 overflow-hidden ${menuOpen ? "max-h-96" : "max-h-0"} bg-white dark:bg-zinc-900`}
+          <div className="nav-tools">
+            <button
+              className="menu-toggle"
+              type="button"
+              aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
+              onClick={() => setMenuOpen((open) => !open)}
             >
-                <ul className="flex flex-col gap-4 px-6 py-4">
-                    <NavLink onClick={() => setMenuOpen(false)} to="/" className={linkStyle}>Home</NavLink>
-                    <NavLink onClick={() => setMenuOpen(false)} to="/About" className={linkStyle}>Sobre</NavLink>
-                    <NavLink onClick={() => setMenuOpen(false)} to="/Projects" className={linkStyle}>Projetos</NavLink>
-                    <NavLink onClick={() => setMenuOpen(false)} to="/Labs" className={linkStyle}>Labs</NavLink>
-                    <NavLink onClick={() => setMenuOpen(false)} to="/Contact" className={linkStyle}>Contato</NavLink>
+              {menuOpen ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </div>
+        </nav>
 
-                    <button onClick={toggleTheme} className="cursor-pointer text-left text-xl">
-                        🌓 Alternar tema
-                    </button>
-                </ul>
-            </div>
-        </header>
-    );
+        <div
+          id="mobile-navigation"
+          className={`mobile-nav${menuOpen ? ' is-open' : ''}`}
+          aria-hidden={!menuOpen}
+        >
+          {links.map(({ label, to, end }) => (
+            <NavLink key={to} to={to} end={end} onClick={closeMenu} tabIndex={menuOpen ? 0 : -1}>
+              {label}
+            </NavLink>
+          ))}
+        </div>
+      </div>
+    </header>
+  );
 }

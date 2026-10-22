@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export default function ProjectCarousel({ images }) {
   const [index, setIndex] = useState(0);
@@ -17,20 +17,20 @@ export default function ProjectCarousel({ images }) {
         src={images[index]}
         alt="Imagem do projeto"
         loading="lazy"
-        className="w-full rounded-xl border border-white/10 shadow-lg shadow-black/40 object-cover"
+        className="w-full rounded-xl border border-white/10 object-cover shadow-lg shadow-black/40"
       />
 
       {/* Botões */}
       <button
         onClick={prev}
-        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/60 px-3 py-2 text-white hover:bg-black"
+        className="absolute top-1/2 left-3 -translate-y-1/2 rounded-full bg-black/60 px-3 py-2 text-white hover:bg-black"
       >
         ‹
       </button>
 
       <button
         onClick={next}
-        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/60 px-3 py-2 text-white hover:bg-black"
+        className="absolute top-1/2 right-3 -translate-y-1/2 rounded-full bg-black/60 px-3 py-2 text-white hover:bg-black"
       >
         ›
       </button>

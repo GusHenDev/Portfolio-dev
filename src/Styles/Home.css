@@ -1,13 +1,13 @@
 .img-card {
-  width: 7,95rem;        /* w-21 → 21 × 0.25rem */
-  height: 12rem;         /* h-48 → 48 × 0.25rem */
-  border-radius: 1rem;   /* rounded-2xl */
+  width: 7, 95rem; /* w-21 → 21 × 0.25rem */
+  height: 12rem; /* h-48 → 48 × 0.25rem */
+  border-radius: 1rem; /* rounded-2xl */
 }
 
 /* md breakpoint (≥ 768px) */
 @media (min-width: 768px) {
   .img-card {
-    width: 13.25rem;     /* w-53 → 53 × 0.25rem */
-    height: 20rem;       /* h-80 → 80 × 0.25rem */
+    width: 13.25rem; /* w-53 → 53 × 0.25rem */
+    height: 20rem; /* h-80 → 80 × 0.25rem */
   }
 }

@@ -1,83 +1,57 @@
-import { Link } from "react-router-dom";
+import { GitBranch, Heart, Link2, Mail } from 'lucide-react';
+
 export default function Footer() {
   return (
-    <footer className="relative bg-(--bg) px-6 py-12 text-(--muted)">
-      {/* Linha superior */}
-      <div className="mx-auto max-w-6xl border-t border-white/10 pt-10">
-        
-        <div className="grid gap-8 md:grid-cols-3">
-          
-          {/* Identidade */}
-          <div>
-            <h3 className="text-lg font-semibold text-(--text)">
-              Gustavo Santana
-            </h3>
-            <p className="mt-2 text-sm">
-              Desenvolvedor de software focado em aplicações modernas e jogos.
-            </p>
-          </div>
-
-          {/* Navegação */}
-          <div>
-            <h4 className="text-sm font-semibold text-(--text)">
-              Navegação
-            </h4>
-            <ul className="mt-3 space-y-2 text-sm">
-              <li><Link to="/" className="hover:text-(--primary)">Home</Link></li>
-              <li><Link to="/About" className="hover:text-(--primary)">Sobre</Link></li>
-              <li><Link to="/Projects" className="hover:text-(--primary)">Projetos</Link></li>
-              <li><Link to="/Labs" className="hover:text-(--primary)">Labs</Link></li>
-              <li><Link to="/Contact" className="hover:text-(--primary)">Contato</Link></li>
-            </ul>
-          </div>
-
-          {/* Contato */}
-          <div>
-            <h4 className="text-sm font-semibold text-(--text)">
-              Contato
-            </h4>
-            <ul className="mt-3 space-y-2 text-sm">
-              <li>
-                <a
-                  href="https://www.linkedin.com/"
-                  target="_blank"
-                  className="hover:text-(--primary)"
-                >
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/"
-                  target="_blank"
-                  className="hover:text-(--primary)"
-                >
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:seuemail@email.com"
-                  className="hover:text-(--primary)"
-                >
-                  E-mail
-                </a>
-              </li>
-            </ul>
-          </div>
-
+    <footer id="contato" className="scroll-mt-16 border-t border-white/10 bg-[#020b14] text-white">
+      <div className="mx-auto grid w-[min(100%-32px,1440px)] gap-4 py-4 sm:w-[calc(100%-48px)] md:grid-cols-[1.1fr_1fr_.8fr] lg:w-[calc(100%-80px)]">
+        <div>
+          <h2 className="flex items-center gap-2 font-['Space_Grotesk',sans-serif] text-sm font-bold">
+            <Mail size={17} className="text-amber-300" /> Vamos conversar?
+          </h2>
+          <p className="mt-1 text-[9px] text-slate-400">
+            Se você tem um projeto, oportunidade ou só quer trocar ideia, me chama! Será um prazer
+            conversar.
+          </p>
+          <a
+            href="mailto:seuemail@email.com"
+            className="mt-2 inline-flex items-center gap-1 text-[9px] text-cyan-300 hover:text-white"
+          >
+            <Mail size={12} /> seuemail@email.com
+          </a>
         </div>
-
-        {/* Copyright */}
-        <div className="mt-12 flex flex-col items-center gap-2 text-xs text-(--muted) md:flex-row md:justify-between">
-          <span>
-            © {new Date().getFullYear()} Gustavo Santana. Todos os direitos reservados.
-          </span>
-          <span>
-            Construído com React e Tailwind
-          </span>
+        <div className="grid content-center gap-1.5 text-[9px] text-slate-400">
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 hover:text-white"
+          >
+            <GitBranch size={12} /> github.com/GuhDev
+          </a>
+          <a
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 hover:text-white"
+          >
+            <Link2 size={12} /> linkedin.com
+          </a>
+          <a href="mailto:seuemail@email.com" className="flex items-center gap-2 hover:text-white">
+            <Mail size={12} /> contato por e-mail
+          </a>
         </div>
-
+        <p className="self-center text-right font-['Space_Grotesk',sans-serif] text-xs text-cyan-300">
+          Obrigado por visitar meu portfólio!
+          <br />
+          Deus abençoe! <Heart size={12} className="inline text-amber-300" />
+        </p>
+      </div>
+      <div className="mx-auto flex w-[min(100%-32px,1440px)] flex-wrap justify-between gap-2 border-t border-white/10 py-2.5 text-[8px] text-slate-500 sm:w-[calc(100%-48px)] lg:w-[calc(100%-80px)]">
+        <span>
+          © {new Date().getFullYear()} GuhDev. Todos os direitos reservados. Feito com ♥ e muito
+          código.
+        </span>
+        <span className="tracking-[.16em]">SONHO / FOCO / TRABALHO / RESULTADO</span>
       </div>
     </footer>
   );

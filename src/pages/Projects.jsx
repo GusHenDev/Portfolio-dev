@@ -1,21 +1,19 @@
-import { useState, useEffect } from "react";
-import ProjectModal from "../components/ProjectModal";
-import parse from "html-react-parser";
+import { useState, useEffect } from 'react';
+import ProjectModal from '../components/ProjectModal';
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
-    document.body.style.overflow = selectedProject ? "hidden" : "auto";
+    document.body.style.overflow = selectedProject ? 'hidden' : 'auto';
   }, [selectedProject]);
-
 
   const projects = [
     {
-      title: "Project Factory",
-      predescription: "Jogo mobile de simulação e gerenciamento de fábrica desenvolvido em Unity e C#.",
-      description:
-        `<span style="font-size:2rem; font-weight:bold">Jogo mobile | Unity • C# </span>
+      title: 'Project Factory',
+      predescription:
+        'Jogo mobile de simulação e gerenciamento de fábrica desenvolvido em Unity e C#.',
+      description: `<span style="font-size:2rem; font-weight:bold">Jogo mobile | Unity • C# </span>
 
 Project Factory é um jogo mobile de simulação e gerenciamento no qual o jogador constrói e expande uma fábrica, tomando decisões estratégicas para otimizar produção, recursos e progressão. O foco do projeto foi criar uma base sólida de sistemas, permitindo evolução contínua do jogo com novas mecânicas no futuro.
 
@@ -69,14 +67,11 @@ Este projeto contribuiu diretamente para o desenvolvimento das seguintes habilid
 
 <a href="https://gustavosan-games.netlify.app/">🎮 Confira meu Portifolio de GameDev</a>
 `,
-      techs: ["Unity", "C#", "Mobile"],
-      video: "https://www.youtube.com/embed/hjIJenf5m60?si=3cpL5QNlfQzS9OX3&autoplay=1&mute=1",
-      images: [
-        "Images/PF1.png",
-        "Images/PF2.png",
-      ],
-      github: "https://github.com/",
-      demo: "#",
+      techs: ['Unity', 'C#', 'Mobile'],
+      video: 'https://www.youtube.com/embed/hjIJenf5m60?si=3cpL5QNlfQzS9OX3&autoplay=1&mute=1',
+      images: ['Images/PF1.png', 'Images/PF2.png'],
+      github: 'https://github.com/',
+      demo: '#',
     },
     /* {
       image: "",
@@ -97,70 +92,45 @@ Este projeto contribuiu diretamente para o desenvolvimento das seguintes habilid
   ];
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-(--bg) px-6 py-24 text-(--text)">
-      {/* Glow de fundo */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="animate-fade-up animate-random-slow absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-(--primary)/80 blur-3xl"></div>
-        <div className="animate-fade-up animate-random-medium absolute bottom-1/2 -right-40 h-134 w-134 rounded-full bg-(--primary-soft)/20 blur-3xl"></div>
-      </div>
+    <section className="page-shell page-section">
+      <span className="eyebrow">Seleção de trabalhos</span>
+      <h1 className="section-heading">Projetos</h1>
+      <p className="section-intro">
+        Alguns projetos que representam minhas habilidades em desenvolvimento, jogos e aplicações
+        modernas.
+      </p>
 
-      <div className="absolute inset-0 bg-linear-to-b from-transparent/10 to-(--bg)"></div>
-
-      <div className="relative mx-auto max-w-6xl animate-fade-up">
-        <h2 className="text-4xl font-bold text-(--destak)">
-          Projetos
-        </h2>
-
-        <img src="../a" alt="" />
-
-        <p className="mt-4 max-w-2xl text-(--muted)">
-          Alguns projetos que representam minhas habilidades em desenvolvimento,
-          jogos e aplicações modernas.
-        </p>
-
-        {/* Grid de projetos */}
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, index) => (
-            <div key={index}
-              onClick={() => setSelectedProject(project)}
-              className="cursor-pointer group rounded-2xl bg-(--bg-soft) p-6 backdrop-blur transition hover:-translate-y-2 hover:bg-(--surface)/50"
-            >
-              <h3 className="text-xl font-bold pb-4">
-                {project.title}
-              </h3>
-
-              <img src={project.images && project.images[0]} alt='Imagem de ${project.title}' className="w-full rounded-xl border border-white/10 object-cover" />
-
-              <p className="mt-3 text-sm text-(--muted)">
-                {project.predescription}
-              </p>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                {project.techs.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-(--destak)/30 bg-(--destak)/10 px-3 py-1 text-xs"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <a
-                href={project.link}
-                className="mt-6 inline-block text-sm font-medium text-(--destak)/70 transition group-hover:underline"
-              >
-                Ver projeto →
-              </a>
+      <div className="content-grid">
+        {projects.map((project, index) => (
+          <article
+            key={index}
+            onClick={() => setSelectedProject(project)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                setSelectedProject(project);
+              }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label={`Ver detalhes de ${project.title}`}
+            className="surface-panel project-card"
+          >
+            <img src={project.images?.[0]} alt={`Imagem do projeto ${project.title}`} />
+            <h3>{project.title}</h3>
+            <p>{project.predescription}</p>
+            <div className="tag-row hero-techs">
+              {project.techs.map((tech) => (
+                <span key={tech} className="tag">
+                  {tech}
+                </span>
+              ))}
             </div>
-          ))}
-        </div>
+            <span className="eyebrow">Abrir detalhes ↗</span>
+          </article>
+        ))}
       </div>
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
-
+      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </section>
   );
 }

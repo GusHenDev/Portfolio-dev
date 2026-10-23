@@ -21,15 +21,15 @@ import { createElement } from 'react';
 import { Link } from 'react-router-dom';
 
 const technologies = [
-  { name: 'React', iconPath: '/public/react.svg', className: 'h-6.5 w-6.5 shrink-0 mr-1.5' },
-  { name: 'C# / .NET', iconPath: '/public/csharp.svg', className: 'h-6.5 w-6.5 shrink-0 mr-1.5' }, // Substitua pelo nome real do seu arquivo
-  { name: 'Unity', iconPath: '/public/unity.svg', className: 'h-5.5 w-5.5 shrink-0 mr-1.5' },
+  { name: 'React', iconPath: 'react.svg', className: 'h-6.5 w-6.5 shrink-0 mr-1.5' },
+  { name: 'C# / .NET', iconPath: 'csharp.svg', className: 'h-6.5 w-6.5 shrink-0 mr-1.5' }, // Substitua pelo nome real do seu arquivo
+  { name: 'Unity', iconPath: 'unity.svg', className: 'h-5.5 w-5.5 shrink-0 mr-1.5' },
   {
     name: 'JavaScript',
-    iconPath: '/public/javascript.svg',
+    iconPath: 'javascript.svg',
     className: 'h-5.5 w-5.5 shrink-0mr-1.5',
   },
-  { name: 'SQL', iconPath: '/public/sql.svg', className: 'h-6.5 w-6.5 shrink-0 mr-1.5' },
+  { name: 'SQL', iconPath: 'sql.svg', className: 'h-6.5 w-6.5 shrink-0 mr-1.5' },
 ];
 
 const skills = [
@@ -42,79 +42,79 @@ const skills = [
   {
     name: 'JS',
     detail: 'Websites e aplicações front-end',
-    iconPath: '/public/javascript.svg',
+    iconPath: 'javascript.svg',
     className: 'h-11 w-11 shrink-0 ',
   },
   {
     name: 'Python',
     detail: 'Automação, scripts e prototipagem',
-    iconPath: '/public/python.svg',
+    iconPath: 'python.svg',
     className: 'h-11 w-11 shrink-0 ',
   },
   {
     name: 'SQL',
     detail: 'Banco de dados e consultas',
-    iconPath: '/public/sql.svg',
+    iconPath: 'sql.svg',
     className: 'h-11 w-11 shrink-0',
   },
   {
     name: 'Unity',
     detail: 'Desenvolvimento de jogos',
-    iconPath: '/public/unity.svg',
+    iconPath: 'unity.svg',
     className: 'h-10 w-10 shrink-0',
   },
   {
     name: 'Blender',
     detail: 'Modelagem 3D e animação',
-    iconPath: '/public/blender.svg',
+    iconPath: 'blender.svg',
     className: 'h-11 w-11 shrink-0',
   },
   {
     name: 'React',
     detail: 'Interfaces modernas',
-    iconPath: '/public/react.svg',
+    iconPath: 'react.svg',
     className: 'h-11 w-11 shrink-0',
   },
   {
     name: '.NET',
     detail: 'APIs e aplicações robustas',
-    iconPath: '/public/dotnet.svg',
+    iconPath: 'dotnet.svg',
     className: 'h-13 w-13 shrink-0 ',
   },
   {
     name: 'HTML',
     detail: 'Websites e aplicações front-end',
-    iconPath: '/public/html5.svg',
+    iconPath: 'html5.svg',
     className: 'h-11 w-11 shrink-0 ',
   },
   {
     name: 'CSS',
     detail: 'Websites e aplicações front-end',
-    iconPath: '/public/css.svg',
+    iconPath: 'css.svg',
     className: 'h-11 w-11 shrink-0 ',
   },
   {
     name: 'Tailwind CSS',
     detail: 'Estilização de interfaces',
-    iconPath: '/public/tailwind-css.svg',
+    iconPath: 'tailwind-css.svg',
     className: 'h-11 w-11 shrink-0',
   },
   {
     name: 'Git & GitHub',
     detail: 'Versionamento e colaboração',
-    iconPath: '/public/github.svg',
+    iconPath: 'github.svg',
     className: 'h-11 w-11 shrink-0 ',
   },
   {
     name: 'Google Play Store',
     detail: 'Publicação de apps e jogos',
-    iconPath: '/public/google-play.svg',
+    iconPath: 'google-play.svg',
     className: 'h-11 w-11 shrink-0',
   },
   {
     name: 'Redes & Hardware',
     detail: 'Manutenção e suporte',
-    iconPath: '/public/computer.svg',
+    iconPath: 'computer.svg',
     className: 'h-10 w-10 shrink-0 ',
   },
 ];

@@ -45,7 +45,7 @@ export default function ProjectModal({ project, onClose }) {
 
           {project.images?.length > 0 && <ProjectCarousel images={project.images} />}
 
-          <p>{parse(project.description)}</p>
+          <div className="whitespace-pre-wrap text-(--muted)">{parse(project.description)}</div>
 
           <div className="hero-techs">
             {project.techs.map((tech) => (

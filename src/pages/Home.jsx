@@ -36,7 +36,7 @@ const skills = [
   {
     name: 'C#',
     detail: 'Linguagem principal',
-    iconPath: '/public/csharp.svg',
+    iconPath: 'csharp.svg',
     className: 'h-11 w-11 shrink-0',
   },
   {

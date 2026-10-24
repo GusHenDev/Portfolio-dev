@@ -5,6 +5,11 @@ import projects from '../data/projects';
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const featuredProject = projects[1];
+
+  function getProjectImage(project) {
+    return project.images[0].startsWith('/') ? project.images[0] : `/${project.images[0]}`;
+  }
 
   useEffect(() => {
     document.body.style.overflow = selectedProject ? 'hidden' : 'auto';
@@ -67,46 +72,112 @@ export default function Projects() {
       <section
         className="scroll-mt-[85px] pt-[34px]"
         id="project-list"
-        aria-labelledby="project-list-title"
+        aria-labelledby="featured-project-title"
       >
-        <div className="mb-[17px] flex items-end justify-between gap-[18px] max-[480px]:items-start">
+        <div className="mb-5 flex items-end justify-between gap-[18px]">
           <div>
-            <span className="eyebrow">Do conceito à execução</span>
+            <span className="eyebrow">Uma ideia em foco</span>
             <h2
               className="mt-[5px] font-['Space_Grotesk','Segoe_UI',sans-serif] text-[clamp(1.45rem,3vw,2rem)] tracking-[-.04em]"
-              id="project-list-title"
+              id="featured-project-title"
             >
-              Projetos em destaque
+              Projeto em destaque
+            </h2>
+          </div>          
+        </div>
+
+        {featuredProject && (
+          <button
+            type="button"
+            className="group block w-full overflow-hidden rounded-[10px] border border-(--border) bg-(--surface) text-left text-(--text) transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-[3px] hover:border-(--destak) hover:shadow-(--shadow) focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-(--primary) motion-reduce:transition-none"
+            onClick={() => setSelectedProject(featuredProject)}
+            aria-label={`Abrir detalhes de ${featuredProject.title}`}
+          >
+            <span className="relative isolate block aspect-[16/9] max-h-[560px] w-full overflow-hidden bg-slate-950">
+              <img
+                src={getProjectImage(featuredProject)}
+                alt={`Captura de tela de ${featuredProject.title}`}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+              <span className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
+              <span className="absolute bottom-3 left-3 z-10 inline-flex items-center rounded-full border border-white/20 bg-[rgb(2_11_20_/_72%)] px-2.5 py-1.5 text-[.65rem] font-bold text-slate-50 backdrop-blur-[8px] sm:bottom-6 sm:left-6 sm:text-[.7rem]">
+                Em destaque
+              </span>
+              {featuredProject.video && (
+                <span className="absolute top-3 right-3 z-10 inline-flex items-center gap-[7px] rounded-full border border-white/20 bg-[rgb(2_11_20_/_72%)] px-[11px] py-[7px] text-[.69rem] text-slate-50 backdrop-blur-[8px] sm:top-auto sm:right-6 sm:bottom-6">
+                  <span className="text-[.6rem] text-amber-300" aria-hidden="true">
+                    ▶
+                  </span>
+                  <span className="sm:hidden">Vídeo</span>
+                  <span className="hidden sm:inline">Vídeo disponível</span>
+                </span>
+              )}
+            </span>
+
+            <span className="flex flex-col gap-3 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-7 sm:py-6">
+              <span className="min-w-0">
+                <span className="text-[.68rem] font-extrabold tracking-[.1em] text-(--destak) uppercase">
+                  {featuredProject.category}
+                </span>
+                <span className="mt-1 block font-['Space_Grotesk','Segoe_UI',sans-serif] text-[clamp(1.45rem,3vw,2rem)] leading-tight font-bold tracking-[-.04em]">
+                  {featuredProject.title}
+                </span>
+                <span className="mt-2 block max-w-[720px] text-[.84rem] leading-relaxed text-(--muted)">
+                  {featuredProject.predescription}
+                </span>
+              </span>
+              <span className="inline-flex shrink-0 items-center gap-2 self-start text-[.8rem] font-bold sm:self-center">
+                Ver projeto
+                <ArrowUpRight
+                  className="text-(--primary) transition-transform duration-200 group-hover:translate-x-[3px] group-hover:-translate-y-[3px]"
+                  size={17}
+                  aria-hidden="true"
+                />
+              </span>
+            </span>
+          </button>
+        )}
+      </section>
+
+      <section className="scroll-mt-[85px] pt-12 sm:pt-16" aria-labelledby="all-projects-title">
+        <div className="mb-5 flex items-end justify-between gap-[18px]">
+          <div>
+            <span className="eyebrow">Explore o portfólio</span>
+            <h2
+              className="mt-[5px] font-['Space_Grotesk','Segoe_UI',sans-serif] text-[clamp(1.45rem,3vw,2rem)] tracking-[-.04em]"
+              id="all-projects-title"
+            >
+              Todos os projetos
             </h2>
           </div>
-          <span className="pb-1 text-[.72rem] whitespace-nowrap text-(--muted) max-[480px]:pt-[19px]">
+          <span className="pb-1 text-[.72rem] whitespace-nowrap text-(--muted)">
             {String(projects.length).padStart(2, '0')} trabalhos
           </span>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => (
             <button
               key={project.title}
               type="button"
-              className="group col-span-full grid min-w-0 grid-cols-[minmax(0,1.12fr)_minmax(270px,.88fr)] overflow-hidden rounded-[10px] border border-(--border) bg-(--surface) text-left text-(--text) transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-[3px] hover:border-(--destak) hover:shadow-(--shadow) focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-(--primary) motion-reduce:transition-none max-[760px]:grid-cols-1"
+              className="group flex min-w-0 flex-col overflow-hidden rounded-[10px] border border-(--border) bg-(--surface) text-left text-(--text) transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-1 hover:border-(--destak) hover:shadow-(--shadow) focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-(--primary) motion-reduce:transition-none"
               onClick={() => setSelectedProject(project)}
               aria-label={`Abrir detalhes de ${project.title}`}
             >
-              <span className="relative isolate block min-h-[310px] overflow-hidden bg-[radial-gradient(ellipse_at_20%_80%,color-mix(in_srgb,var(--destak)_35%,transparent),transparent_55%),var(--bg-soft)] after:pointer-events-none after:absolute after:inset-x-0 after:top-[45%] after:bottom-0 after:bg-[linear-gradient(0deg,rgb(2_11_20_/_62%),transparent)] after:content-[''] max-[760px]:aspect-video max-[760px]:min-h-0">
+              <span className="relative isolate block aspect-[4/3] overflow-hidden bg-(--bg-soft)">
                 <img
-                  src={
-                    project.images[0].startsWith('/') ? project.images[0] : `/${project.images[0]}`
-                  }
+                  src={getProjectImage(project)}
                   alt={`Captura de tela de ${project.title}`}
                   loading="lazy"
-                  className="h-full min-h-[310px] w-full object-cover transition-transform duration-[400ms] group-hover:scale-[1.035] max-[760px]:min-h-0"
+                  className="absolute inset-0 h-full w-full scale-[1.08] object-cover object-center transition-transform duration-500 group-hover:scale-[1.14]"
                 />
-                <span className="absolute bottom-4 left-4 z-10 inline-flex items-center rounded-full border border-white/20 bg-[rgb(2_11_20_/_72%)] px-2.5 py-1.5 text-[.7rem] font-bold text-slate-50 backdrop-blur-[8px]">
+                <span className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent" />
+                <span className="absolute bottom-3.5 left-3.5 z-10 inline-flex items-center rounded-full border border-white/20 bg-[rgb(2_11_20_/_72%)] px-2.5 py-1.5 text-[.7rem] font-bold text-slate-50 backdrop-blur-[8px]">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 {project.video && (
-                  <span className="absolute right-4 bottom-4 z-10 inline-flex items-center gap-[7px] rounded-full border border-white/20 bg-[rgb(2_11_20_/_72%)] px-[11px] py-[7px] text-[.69rem] text-slate-50 backdrop-blur-[8px]">
+                  <span className="absolute right-3.5 bottom-3.5 z-10 inline-flex items-center gap-[7px] rounded-full border border-white/20 bg-[rgb(2_11_20_/_72%)] px-[11px] py-[7px] text-[.69rem] text-slate-50 backdrop-blur-[8px]">
                     <span className="text-[.6rem] text-amber-300" aria-hidden="true">
                       ▶
                     </span>
@@ -115,24 +186,24 @@ export default function Projects() {
                 )}
               </span>
 
-              <span className="flex flex-col items-start justify-center p-[clamp(22px,4vw,42px)] max-[480px]:px-[18px] max-[480px]:pt-[22px] max-[480px]:pb-6">
+              <span className="flex flex-1 flex-col items-start p-4 sm:p-5">
                 <span className="text-[.68rem] font-extrabold tracking-[.1em] text-(--destak) uppercase">
                   {project.category}
                 </span>
-                <span className="mt-2.5 font-['Space_Grotesk','Segoe_UI',sans-serif] text-[clamp(1.65rem,3vw,2.35rem)] leading-[1.12] font-bold tracking-[-.045em]">
+                <span className="mt-1.5 font-['Space_Grotesk','Segoe_UI',sans-serif] text-[1.3rem] leading-tight font-bold tracking-[-.04em]">
                   {project.title}
                 </span>
-                <span className="mt-3 text-[.86rem] leading-[1.7] text-(--muted)">
+                <span className="mt-2 line-clamp-3 text-[.78rem] leading-relaxed text-(--muted)">
                   {project.predescription}
                 </span>
-                <span className="mt-[19px] flex flex-wrap gap-[7px]">
+                <span className="mt-3.5 flex flex-wrap gap-1.5">
                   {project.techs.map((tech) => (
                     <span className="tag" key={tech}>
                       {tech}
                     </span>
                   ))}
                 </span>
-                <span className="mt-[23px] inline-flex items-center gap-2 text-[.8rem] font-bold">
+                <span className="mt-4 inline-flex items-center gap-2 text-[.78rem] font-bold">
                   Conhecer projeto
                   <ArrowUpRight
                     className="text-(--primary) transition-transform duration-200 group-hover:translate-x-[3px] group-hover:-translate-y-[3px]"

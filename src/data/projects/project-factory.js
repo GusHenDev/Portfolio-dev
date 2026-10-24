@@ -58,7 +58,7 @@ Este projeto contribuiu diretamente para o desenvolvimento das seguintes habilid
 `,
   techs: ['Unity', 'C#', 'Mobile'],
   video: 'https://www.youtube.com/embed/hjIJenf5m60?si=3cpL5QNlfQzS9OX3&autoplay=1&mute=1',
-  images: ['Images/PF1.png', 'Images/PF2.png'],
+  images: ['Images/PF1.png', 'Images/PF2.png', 'Images/PF3.png', 'Images/PF4.png', 'Images/PF5.png'],
   github: 'https://github.com/',
   demo: '#',
 };

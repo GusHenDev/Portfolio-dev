@@ -83,7 +83,7 @@ export default function Projects() {
             >
               Projeto em destaque
             </h2>
-          </div>          
+          </div>
         </div>
 
         {featuredProject && (
@@ -96,7 +96,7 @@ export default function Projects() {
             <span className="relative isolate block aspect-[16/9] max-h-[560px] w-full overflow-hidden bg-slate-950">
               <img
                 src={getProjectImage(featuredProject)}
-                alt={`Captura de tela de ${featuredProject.title}`}
+                alt={featuredProject.imageAlt ?? `Captura de tela de ${featuredProject.title}`}
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />
@@ -168,7 +168,7 @@ export default function Projects() {
               <span className="relative isolate block aspect-[4/3] overflow-hidden bg-(--bg-soft)">
                 <img
                   src={getProjectImage(project)}
-                  alt={`Captura de tela de ${project.title}`}
+                  alt={project.imageAlt ?? `Captura de tela de ${project.title}`}
                   loading="lazy"
                   className="absolute inset-0 h-full w-full scale-[1.08] object-cover object-center transition-transform duration-500 group-hover:scale-[1.14]"
                 />
